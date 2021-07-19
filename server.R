@@ -11,13 +11,23 @@ library(shiny)
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
+    # cargar plots
+    source('./plots.R')
     
     output$hospiPlot <- renderPlot({
-        
-        # cargar plots
-        source('./plots.R')
         hospi_plt
-        
+    })
+    
+    output$muertPlot <- renderPlot({
+        muert_plt
+    })
+    
+    output$positPlot <- renderPlot({
+        posit_plt
+    })
+    
+    output$vacunPlot <- renderPlot({
+        vacun_plt
     })
 
     # output$distPlot <- renderPlot({

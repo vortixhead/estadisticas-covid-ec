@@ -13,7 +13,7 @@ library(shiny)
 shinyUI(fluidPage(
 
     # Application title
-    titlePanel("Old Faithful Geyser Data"),
+    titlePanel("Estadísticas sobre COVID-19 en Ecuador"),
 
     # Sidebar with a slider input for number of bins
     sidebarLayout(
@@ -27,7 +27,13 @@ shinyUI(fluidPage(
 
         # Show a plot of the generated distribution
         mainPanel(
-            plotOutput("hospiPlot")
-        )
+            fluidRow(
+                plotOutput("hospiPlot"), 
+                plotOutput("muertPlot"),
+                plotOutput("positPlot"),
+                plotOutput("vacunPlot"),
+            )
+        ),
+      
     )
 ))
