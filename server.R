@@ -13,10 +13,40 @@ library(shiny)
 shinyServer(function(input, output) {
     # cargar datos
     source('./load_data.R')
-    
-    output$rango_fechas <- renderPrint({ input$rango_fechas[1] })
-    
-    output$hosp_filter <- renderPrint({ input$hosp_filter })
+
+    output$vacun2Plot <- renderPlot({
+        filtered_data <- reactive({
+            vacun2_dia_long %>% 
+                filter(variable %in% input$vacun2_filter) %>%
+                filter(between(fecha, 
+                               as.Date(input$rango_fechas[1], format="%Y/%m/%d"), 
+                               as.Date(input$rango_fechas[2], format="%Y/%m/%d")))
+        })
+        
+        colors <- brewer.pal(3, "Dark2")
+        names(colors) <- levels(factor(vacun2_dia_long$variable))
+        custom_colors <- scale_color_manual(name = "Leyenda", values = colors)
+        
+        # crear plot
+        vacun2_plt <- ggplot(
+            filtered_data(), 
+            aes(
+                x=fecha, 
+                y=cantidad, 
+                group = variable, 
+                color = variable)
+        ) + 
+            geom_line() +
+            labs(
+                x="Fecha", 
+                y="Vacunas", 
+                title="Vacunas arribadas diarias", 
+                color = 'Leyenda') +
+            theme(plot.title = element_text(hjust=0.5, size=20, face="bold")) +
+            scale_x_date(date_labels = "%b %Y") +
+            custom_colors
+        vacun2_plt
+    })
     
     output$hospiPlot <- renderPlot({
         

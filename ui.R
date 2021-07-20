@@ -27,6 +27,23 @@ shinyUI(fluidPage(
              ),
           hr(),
           conditionalPanel(
+            condition = "input.tabs == 'Vacunas aplicadas'",
+            checkboxGroupInput(
+              "vacun2_filter", 
+              label = h4("Filtrar"), 
+              choices = list(
+                "Total" = "dosis_total", 
+                "Primera dosis" = "primera_dosis", 
+                "Segunda dosis" = "segunda_dosis"
+              ),
+              selected = c(
+                "dosis_total", 
+                "primera_dosis", 
+                "segunda_dosis"
+              )
+            ),
+          ),
+          conditionalPanel(
             condition = "input.tabs == 'Hospitalizaciones'",
             checkboxGroupInput(
               "hosp_filter", 
@@ -109,10 +126,11 @@ shinyUI(fluidPage(
         mainPanel(
           tabsetPanel(
             id = "tabs",
-            tabPanel("Hospitalizaciones", br(), plotOutput("hospiPlot")), 
-            tabPanel("Muertes", br(), plotOutput("muertPlot")), 
+            tabPanel("Vacunas aplicadas", br(), plotOutput("vacun2Plot")),
+            tabPanel("Vacunas arribadas", br(), plotOutput("vacunPlot")),
             tabPanel("Pruebas positivas", br(), plotOutput("positPlot")),
-            tabPanel("Vacunas arribadas", br(), plotOutput("vacunPlot"))
+            tabPanel("Hospitalizaciones", br(), plotOutput("hospiPlot")), 
+            tabPanel("Muertes", br(), plotOutput("muertPlot")) 
           )
         )
           

@@ -75,5 +75,25 @@ vacun_dia_long$fecha <- as.Date(vacun_dia_long$fecha, format= 'X%d.%m.%Y')
 
 # ==============================================================================
 
+
+# ==============================================================================
+# Plot vacunación
+
+# cargar bd
+vacun2_dia <- read.csv(
+  'https://github.com/andrab/ecuacovid/raw/master/datos_crudos/vacunas/vacunas.csv', 
+  header = TRUE, 
+  encoding = "UTF-8")
+
+# reestructurar
+# converter de wide a long
+vacun2_dia_long <- melt(vacun2_dia, value.name = 'cantidad') 
+# renombrar columna
+# names(vacun2_dia_long)[names(vacun2_dia_long) == "variable"] <- "fecha" 
+# convertir columna a fecha
+vacun2_dia_long$fecha <- as.Date(vacun2_dia_long$fecha, format= '%d/%m/%Y') 
+
+# ==============================================================================
+
 # full_db <- read.csv('./db/datos_crudos/ecuacovid.csv', header = TRUE, encoding = "UTF-8")
 
