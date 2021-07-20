@@ -30,7 +30,7 @@ shinyUI(fluidPage(
             condition = "input.tabs == 'Hospitalizaciones'",
             checkboxGroupInput(
               "hosp_filter", 
-               label = h3("Filtrar"), 
+               label = h4("Filtrar"), 
                choices = list(
                  "Altas hopitalarias" = "Altas Hospitalitaria", 
                  "Hospitalizados estables" = "Hospitalizadas Estables", 
@@ -41,6 +41,61 @@ shinyUI(fluidPage(
                  "Hospitalizadas Pronóstico Reservadas"
                  )
               ),
+          ),
+          conditionalPanel(
+            condition = "input.tabs == 'Muertes'",
+            checkboxGroupInput(
+              "muert_filter", 
+              label = h4("Filtrar"), 
+              choices = list(
+                "Total muertes" = "Total Muertes", 
+                "Nuevas muertes" = "Nuevas", 
+                "Muertes" = "Muertes",
+                "Muertes probables" = "Muertes Probables"
+              ),
+              selected = c(
+                "Total Muertes", 
+                "Nuevas", 
+                "Muertes",
+                "Muertes Probables"
+              )
+            ),
+          ),
+          conditionalPanel(
+            condition = "input.tabs == 'Pruebas positivas'",
+            checkboxGroupInput(
+              "posit_filter", 
+              label = h4("Filtrar"), 
+              choices = list(
+                "Nuevas positivas" = "Nuevas", 
+                "PCR" = "PCR", 
+                "Pruebas rápidas" = "Rápidas",
+                "Total positivas" = "Total Positivas"
+              ),
+              selected = c(
+                "Nuevas", 
+                "PCR", 
+                "Rápidas",
+                "Total Positivas"
+              )
+            ),
+          ),
+          conditionalPanel(
+            condition = "input.tabs == 'Vacunas arribadas'",
+            checkboxGroupInput(
+              "vacun_filter", 
+              label = h4("Filtrar"), 
+              choices = list(
+                "Oxford/AstraZeneca" = "Oxford/AstraZeneca", 
+                "Pfizer/BioNTech" = "Pfizer/BioNTech", 
+                "Sinovac" = "Sinovac"
+              ),
+              selected = c(
+                "Oxford/AstraZeneca", 
+                "Pfizer/BioNTech", 
+                "Sinovac"
+              )
+            ),
           ),
           hr(),
           tags$div(
@@ -56,7 +111,7 @@ shinyUI(fluidPage(
             id = "tabs",
             tabPanel("Hospitalizaciones", br(), plotOutput("hospiPlot")), 
             tabPanel("Muertes", br(), plotOutput("muertPlot")), 
-            tabPanel("Positivos", br(), plotOutput("positPlot")),
+            tabPanel("Pruebas positivas", br(), plotOutput("positPlot")),
             tabPanel("Vacunas arribadas", br(), plotOutput("vacunPlot"))
           )
         )

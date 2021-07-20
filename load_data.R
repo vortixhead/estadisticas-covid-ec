@@ -39,24 +39,6 @@ names(muert_dia_long)[names(muert_dia_long) == "variable"] <- "fecha"
 # convertir columna a fecha
 muert_dia_long$fecha <- as.Date(muert_dia_long$fecha, format= 'X%d.%m.%Y') 
 
-
-# crear plot
-muert_plt <- ggplot(muert_dia_long, 
-                    aes(
-                      x=fecha, 
-                      y=cantidad, 
-                      group = informacion, 
-                      color = informacion)) + 
-  geom_line() +
-  labs(
-    x="Fecha", 
-    y="Muertes", 
-    title="Muertes diarias", 
-    color = 'Leyenda') +
-  theme(plot.title = element_text(hjust=0.5, size=20, face="bold")) +
-  scale_x_date(date_labels = "%b %Y")
-
-
 # ==============================================================================
 # Plot positivas diarias
 
@@ -73,24 +55,6 @@ posit_dia_long <- melt(posit_dia, value.name = 'cantidad')
 names(posit_dia_long)[names(posit_dia_long) == "variable"] <- "fecha" 
 # convertir columna a fecha
 posit_dia_long$fecha <- as.Date(posit_dia_long$fecha, format= 'X%d.%m.%Y') 
-
-
-# crear plot
-posit_plt <- ggplot(posit_dia_long, 
-                    aes(
-                      x=fecha, 
-                      y=cantidad, 
-                      group = informacion, 
-                      color = informacion)) + 
-  geom_line() +
-  labs(
-    x="Fecha", 
-    y="Positivas", 
-    title="Pruebas positivas diarias", 
-    color = 'Leyenda') +
-  theme(plot.title = element_text(hjust=0.5, size=20, face="bold")) +
-  scale_x_date(date_labels = "%b %Y")
-
 
 # ==============================================================================
 # Plot vacunas arribadas diarias
@@ -109,30 +73,7 @@ names(vacun_dia_long)[names(vacun_dia_long) == "variable"] <- "fecha"
 # convertir columna a fecha
 vacun_dia_long$fecha <- as.Date(vacun_dia_long$fecha, format= 'X%d.%m.%Y') 
 
-
-# crear plot
-vacun_plt <- ggplot(vacun_dia_long, 
-                    aes(
-                      x=fecha, 
-                      y=cantidad, 
-                      group = fabricante, 
-                      color = fabricante)) + 
-  geom_line() +
-  labs(
-    x="Fecha", 
-    y="Vacunas", 
-    title="Vacunas arribadas diarias", 
-    color = 'Fabricante') +
-  theme(plot.title = element_text(hjust=0.5, size=20, face="bold")) +
-  scale_x_date(date_labels = "%b %Y")
-
-
 # ==============================================================================
-# Colores
-colors <- brewer.pal(3, "Dark2")
-names(colors) <- levels(hosp_dia_long$informacion)
-custom_colors <- scale_colour_manual(name = "Leyenda", values = colors)
-
 
 # full_db <- read.csv('./db/datos_crudos/ecuacovid.csv', header = TRUE, encoding = "UTF-8")
 
