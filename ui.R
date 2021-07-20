@@ -18,26 +18,46 @@ shinyUI(fluidPage(
     # Sidebar with a slider input for number of bins
     sidebarLayout(
         sidebarPanel(
-          dateRangeInput("rango_fechas", 
-                         label = h4("Rango de fecha"),
-                         start = '2020-03-13',
-                         min = '2020-03-13',
-                         language = 'es'
-                         ),
+          dateRangeInput(
+            "rango_fechas", 
+             label = h4("Rango de fecha"),
+             start = '2020-03-13',
+             min = '2020-03-13',
+             language = 'es'
+             ),
+          hr(),
+          conditionalPanel(
+            condition = "input.tabs == 'Hospitalizaciones'",
+            checkboxGroupInput(
+              "hosp_filter", 
+               label = h3("Filtrar"), 
+               choices = list(
+                 "Altas hopitalarias" = "Altas Hospitalitaria", 
+                 "Hospitalizados estables" = "Hospitalizadas Estables", 
+                 "Pronóstico reservado" = "Hospitalizadas Pronóstico Reservadas"),
+               selected = c(
+                 "Altas Hospitalitaria", 
+                 "Hospitalizadas Estables", 
+                 "Hospitalizadas Pronóstico Reservadas"
+                 )
+              ),
+          ),
           hr(),
           tags$div(
             HTML("<p>Fuente: <a href='https://github.com/andrab/ecuacovid'>ecuacovid</a></p>")
-          )
+          ),
+          # verbatimTextOutput("hosp_filter"),
           # fluidRow(column(4, verbatimTextOutput("rango_fechas")))
         ),
 
         # Show a plot of the generated distribution
         mainPanel(
           tabsetPanel(
-            tabPanel("Hospitalizaciones", plotOutput("hospiPlot")), 
-            tabPanel("Muertes", plotOutput("muertPlot")), 
-            tabPanel("Positivos", plotOutput("positPlot")),
-            tabPanel("Vacunas arribadas",  plotOutput("vacunPlot"))
+            id = "tabs",
+            tabPanel("Hospitalizaciones", br(), plotOutput("hospiPlot")), 
+            tabPanel("Muertes", br(), plotOutput("muertPlot")), 
+            tabPanel("Positivos", br(), plotOutput("positPlot")),
+            tabPanel("Vacunas arribadas", br(), plotOutput("vacunPlot"))
           )
         )
           
