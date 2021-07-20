@@ -14,31 +14,26 @@ shinyServer(function(input, output) {
     # cargar plots
     source('./plots.R')
     
+    output$rango_fechas <- renderPrint({ input$rango_fechas })
+    
     output$hospiPlot <- renderPlot({
-        hospi_plt
+        hospi_plt + 
+        xlim(as.Date(input$rango_fechas, format="%Y/%m/%d") )
     })
     
     output$muertPlot <- renderPlot({
-        muert_plt
+        muert_plt + 
+        xlim(as.Date(input$rango_fechas, format="%Y/%m/%d") )
     })
     
     output$positPlot <- renderPlot({
-        posit_plt
+        posit_plt + 
+        xlim(as.Date(input$rango_fechas, format="%Y/%m/%d") )
     })
     
     output$vacunPlot <- renderPlot({
-        vacun_plt
+        vacun_plt + 
+        xlim(as.Date(input$rango_fechas, format="%Y/%m/%d") )
     })
-
-    # output$distPlot <- renderPlot({
-    # 
-    #     # generate bins based on input$bins from ui.R
-    #     x    <- faithful[, 2]
-    #     bins <- seq(min(x), max(x), length.out = input$bins + 1)
-    # 
-    #     # draw the histogram with the specified number of bins
-    #     hist(x, breaks = bins, col = 'darkgray', border = 'white')
-    # 
-    # })
 
 })

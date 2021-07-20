@@ -18,22 +18,31 @@ shinyUI(fluidPage(
     # Sidebar with a slider input for number of bins
     sidebarLayout(
         sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
+          dateRangeInput("rango_fechas", 
+                         label = h4("Rango de fecha"),
+                         start = '2020-03-13',
+                         min = '2020-03-13',
+                         language = 'es'
+                         ),
+          hr(),
+          tags$div(
+            HTML("<p>Fuente: <a href='https://github.com/andrab/ecuacovid'>ecuacovid</a></p>")
+          )
+          # fluidRow(column(4, verbatimTextOutput("rango_fechas")))
         ),
 
         # Show a plot of the generated distribution
         mainPanel(
-            fluidRow(
-                plotOutput("hospiPlot"), 
-                plotOutput("muertPlot"),
-                plotOutput("positPlot"),
-                plotOutput("vacunPlot"),
-            )
+          tabsetPanel(
+            tabPanel("Hospitalizaciones", plotOutput("hospiPlot")), 
+            tabPanel("Muertes", plotOutput("muertPlot")), 
+            tabPanel("Positivos", plotOutput("positPlot")),
+            tabPanel("Vacunas arribadas",  plotOutput("vacunPlot"))
+          )
+        )
+          
+            
         ),
       
     )
-))
+)
