@@ -40,7 +40,7 @@ shinyServer(function(input, output) {
             labs(
                 x="Fecha", 
                 y="Vacunas", 
-                title="Vacunas arribadas diarias", 
+                title="Vacunas aplicadas por día", 
                 color = 'Leyenda') +
             theme(plot.title = element_text(hjust=0.5, size=20, face="bold")) +
             scale_x_date(date_labels = "%b %Y") +
