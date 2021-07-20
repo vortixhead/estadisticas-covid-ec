@@ -43,8 +43,10 @@ shinyServer(function(input, output) {
                 title="Vacunas aplicadas por día", 
                 color = 'Leyenda') +
             theme(plot.title = element_text(hjust=0.5, size=20, face="bold")) +
-            scale_x_date(date_labels = "%b %Y") +
-            custom_colors
+            scale_x_date(breaks = date_breaks("months"), date_labels = "%b %Y") +
+            theme(axis.text.x = element_text(angle = 90)) +
+            custom_colors+
+            scale_y_continuous(labels = unit_format(unit = "M", scale = 1e-6))
         vacun2_plt
     })
     
@@ -79,8 +81,10 @@ shinyServer(function(input, output) {
                 title="Hospitalizaciones diarias", 
                 color = 'Leyenda') +
             theme(plot.title = element_text(hjust=0.5, size=20, face="bold")) +
-            scale_x_date(date_labels = "%b %Y") +
-            custom_colors
+            scale_x_date(breaks = date_breaks("months"), date_labels = "%b %Y") +
+            theme(axis.text.x = element_text(angle = 90)) +
+            custom_colors +
+            scale_y_continuous(labels = unit_format(unit = "K", scale = 1e-3))
         hospi_plt
     })
     
@@ -113,8 +117,10 @@ shinyServer(function(input, output) {
                 title="Muertes diarias", 
                 color = 'Leyenda') +
             theme(plot.title = element_text(hjust=0.5, size=20, face="bold")) +
-            scale_x_date(date_labels = "%b %Y") +
-            custom_colors
+            scale_x_date(breaks = date_breaks("months"), date_labels = "%b %Y") +
+            theme(axis.text.x = element_text(angle = 90)) +
+            custom_colors +
+            scale_y_continuous(labels = unit_format(unit = "K", scale = 1e-3))
         muert_plt
     })
     
@@ -147,8 +153,10 @@ shinyServer(function(input, output) {
                 title="Pruebas positivas diarias", 
                 color = 'Leyenda') +
             theme(plot.title = element_text(hjust=0.5, size=20, face="bold")) +
-            scale_x_date(date_labels = "%b %Y") +
-            custom_colors
+            scale_x_date(breaks = date_breaks("months"), date_labels = "%b %Y") +
+            theme(axis.text.x = element_text(angle = 90)) +
+            custom_colors +
+            scale_y_continuous(labels = unit_format(unit = "K", scale = 1e-3))
         posit_plt
     })
     
@@ -181,8 +189,10 @@ shinyServer(function(input, output) {
                 title="Vacunas arribadas diarias", 
                 color = 'Leyenda') +
             theme(plot.title = element_text(hjust=0.5, size=20, face="bold")) +
-            scale_x_date(date_labels = "%b %Y") +
-            custom_colors
+            scale_x_date(breaks = date_breaks("months"), date_labels = "%b %Y") +
+            theme(axis.text.x = element_text(angle = 90)) +
+            custom_colors +
+            scale_y_continuous(labels = unit_format(unit = "M", scale = 1e-6))
         vacun_plt
     })
 
