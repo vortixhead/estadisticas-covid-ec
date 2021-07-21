@@ -5,7 +5,7 @@ library(dplyr)
 library(RColorBrewer)
 library(scales)
 
-
+Sys.setlocale(category = "LC_ALL", locale = "spanish")
 # ==============================================================================
 # Plot hospitalizaciones diarias
 

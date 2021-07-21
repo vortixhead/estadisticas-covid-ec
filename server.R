@@ -38,13 +38,13 @@ shinyServer(function(input, output) {
         ) + 
             geom_line() +
             labs(
-                x="Fecha", 
+                x="", 
                 y="Vacunas", 
                 title="Vacunas aplicadas por día", 
                 color = 'Leyenda') +
             theme(plot.title = element_text(hjust=0.5, size=20, face="bold")) +
             scale_x_date(breaks = date_breaks("months"), date_labels = "%b %Y") +
-            theme(axis.text.x = element_text(angle = 90)) +
+            theme(axis.text.x = element_text(angle = 45)) +
             custom_colors+
             scale_y_continuous(labels = unit_format(unit = "M", scale = 1e-6))
         vacun2_plt
@@ -76,13 +76,13 @@ shinyServer(function(input, output) {
             ) + 
             geom_line() +
             labs(
-                x="Fecha", 
+                x="", 
                 y="Hospitalizaciones", 
                 title="Hospitalizaciones diarias", 
                 color = 'Leyenda') +
             theme(plot.title = element_text(hjust=0.5, size=20, face="bold")) +
             scale_x_date(breaks = date_breaks("months"), date_labels = "%b %Y") +
-            theme(axis.text.x = element_text(angle = 90)) +
+            theme(axis.text.x = element_text(angle = 45)) +
             custom_colors +
             scale_y_continuous(labels = unit_format(unit = "K", scale = 1e-3))
         hospi_plt
@@ -112,13 +112,13 @@ shinyServer(function(input, output) {
         ) + 
             geom_line() +
             labs(
-                x="Fecha", 
+                x="", 
                 y="Muertes", 
                 title="Muertes diarias", 
                 color = 'Leyenda') +
             theme(plot.title = element_text(hjust=0.5, size=20, face="bold")) +
             scale_x_date(breaks = date_breaks("months"), date_labels = "%b %Y") +
-            theme(axis.text.x = element_text(angle = 90)) +
+            theme(axis.text.x = element_text(angle = 45)) +
             custom_colors +
             scale_y_continuous(labels = unit_format(unit = "K", scale = 1e-3))
         muert_plt
@@ -148,13 +148,13 @@ shinyServer(function(input, output) {
             ) + 
             geom_line() +
             labs(
-                x="Fecha", 
+                x="", 
                 y="Positivas", 
                 title="Pruebas positivas diarias", 
                 color = 'Leyenda') +
             theme(plot.title = element_text(hjust=0.5, size=20, face="bold")) +
             scale_x_date(breaks = date_breaks("months"), date_labels = "%b %Y") +
-            theme(axis.text.x = element_text(angle = 90)) +
+            theme(axis.text.x = element_text(angle = 45)) +
             custom_colors +
             scale_y_continuous(labels = unit_format(unit = "K", scale = 1e-3))
         posit_plt
@@ -184,13 +184,13 @@ shinyServer(function(input, output) {
         ) + 
             geom_line() +
             labs(
-                x="Fecha", 
+                x="", 
                 y="Vacunas", 
                 title="Vacunas arribadas diarias", 
                 color = 'Leyenda') +
             theme(plot.title = element_text(hjust=0.5, size=20, face="bold")) +
             scale_x_date(breaks = date_breaks("months"), date_labels = "%b %Y") +
-            theme(axis.text.x = element_text(angle = 90)) +
+            theme(axis.text.x = element_text(angle = 45)) +
             custom_colors +
             scale_y_continuous(labels = unit_format(unit = "M", scale = 1e-6))
         vacun_plt

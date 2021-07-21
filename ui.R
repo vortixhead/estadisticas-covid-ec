@@ -127,11 +127,11 @@ shinyUI(fluidPage(
         mainPanel(
           tabsetPanel(
             id = "tabs",
-            tabPanel("Vacunas aplicadas", br(), plotlyOutput ("vacun2Plot")),
-            tabPanel("Vacunas arribadas", br(), plotlyOutput ("vacunPlot")),
-            tabPanel("Pruebas positivas", br(), plotlyOutput ("positPlot")),
-            tabPanel("Hospitalizaciones", br(), plotlyOutput ("hospiPlot")), 
-            tabPanel("Muertes", br(), plotlyOutput ("muertPlot")) 
+            tabPanel("Vacunas aplicadas", br(), plotlyOutput("vacun2Plot")),
+            tabPanel("Vacunas arribadas", br(), plotlyOutput("vacunPlot")),
+            tabPanel("Pruebas positivas", br(), plotlyOutput("positPlot")),
+            tabPanel("Hospitalizaciones", br(), plotlyOutput("hospiPlot")), 
+            tabPanel("Muertes", br(), plotlyOutput("muertPlot")) 
           )
         )
           
