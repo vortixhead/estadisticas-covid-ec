@@ -14,7 +14,7 @@ shinyServer(function(input, output) {
     # cargar datos
     source('./load_data.R')
 
-    output$vacun2Plot <- renderPlot({
+    output$vacun2Plot <- renderPlotly({
         filtered_data <- reactive({
             vacun2_dia_long %>% 
                 filter(variable %in% input$vacun2_filter) %>%
@@ -50,7 +50,7 @@ shinyServer(function(input, output) {
         vacun2_plt
     })
     
-    output$hospiPlot <- renderPlot({
+    output$hospiPlot <- renderPlotly({
         
         # filtros
         filtered_data <- reactive({
@@ -88,7 +88,7 @@ shinyServer(function(input, output) {
         hospi_plt
     })
     
-    output$muertPlot <- renderPlot({
+    output$muertPlot <- renderPlotly({
         filtered_data <- reactive({
             muert_dia_long %>% 
                 filter(informacion %in% input$muert_filter) %>%
@@ -124,7 +124,7 @@ shinyServer(function(input, output) {
         muert_plt
     })
     
-    output$positPlot <- renderPlot({
+    output$positPlot <- renderPlotly({
         filtered_data <- reactive({
             posit_dia_long %>% 
                 filter(informacion %in% input$posit_filter) %>%
@@ -160,7 +160,7 @@ shinyServer(function(input, output) {
         posit_plt
     })
     
-    output$vacunPlot <- renderPlot({
+    output$vacunPlot <- renderPlotly({
         filtered_data <- reactive({
             vacun_dia_long %>% 
                 filter(fabricante %in% input$vacun_filter) %>%

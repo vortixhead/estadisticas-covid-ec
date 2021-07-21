@@ -8,6 +8,7 @@
 #
 
 library(shiny)
+library(plotly)
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
@@ -126,11 +127,11 @@ shinyUI(fluidPage(
         mainPanel(
           tabsetPanel(
             id = "tabs",
-            tabPanel("Vacunas aplicadas", br(), plotOutput("vacun2Plot")),
-            tabPanel("Vacunas arribadas", br(), plotOutput("vacunPlot")),
-            tabPanel("Pruebas positivas", br(), plotOutput("positPlot")),
-            tabPanel("Hospitalizaciones", br(), plotOutput("hospiPlot")), 
-            tabPanel("Muertes", br(), plotOutput("muertPlot")) 
+            tabPanel("Vacunas aplicadas", br(), plotlyOutput ("vacun2Plot")),
+            tabPanel("Vacunas arribadas", br(), plotlyOutput ("vacunPlot")),
+            tabPanel("Pruebas positivas", br(), plotlyOutput ("positPlot")),
+            tabPanel("Hospitalizaciones", br(), plotlyOutput ("hospiPlot")), 
+            tabPanel("Muertes", br(), plotlyOutput ("muertPlot")) 
           )
         )
           
