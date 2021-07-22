@@ -5,7 +5,7 @@ account: vortixhead
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 4404695
-bundleId: 4843516
+bundleId: 4843616
 url: https://vortixhead.shinyapps.io/estadisticas-covid-ec/
-when: 1626909316.32405
-lastSyncTime: 1626909316.32405
+when: 1626911735.24386
+lastSyncTime: 1626911735.24386
