@@ -33,7 +33,6 @@ shinyServer(function(input, output) {
             aes(
                 x=fecha, 
                 y=cantidad, 
-                group = variable, 
                 color = variable)
         ) + 
             geom_line() +
@@ -70,7 +69,6 @@ shinyServer(function(input, output) {
             aes(
                 x=fecha, 
                 y=cantidad, 
-                group = informacion, 
                 color = informacion
                 )
             ) + 
@@ -107,7 +105,6 @@ shinyServer(function(input, output) {
             aes(
                 x=fecha, 
                 y=cantidad, 
-                group = informacion, 
                 color = informacion)
         ) + 
             geom_line() +
@@ -143,7 +140,6 @@ shinyServer(function(input, output) {
             aes(
                 x=fecha, 
                 y=cantidad, 
-                group = informacion, 
                 color = informacion)
             ) + 
             geom_line() +
@@ -179,7 +175,6 @@ shinyServer(function(input, output) {
             aes(
                 x=fecha, 
                 y=cantidad, 
-                group = fabricante, 
                 color = fabricante)
         ) + 
             geom_line() +
