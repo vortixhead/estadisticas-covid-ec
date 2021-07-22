@@ -10,6 +10,7 @@
 library(shiny)
 library(plotly)
 
+
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
 
@@ -24,7 +25,8 @@ shinyUI(fluidPage(
              label = h4("Rango de fecha"),
              start = '2020-03-13',
              min = '2020-03-13',
-             language = 'es'
+             language = 'es',
+             separator = 'hasta'
              ),
           hr(),
           conditionalPanel(
@@ -120,8 +122,8 @@ shinyUI(fluidPage(
             HTML('<script async defer src="https://buttons.github.io/buttons.js"></script>'),
             HTML("<p>📄 Fuente: <a href='https://github.com/andrab/ecuacovid' target='_blank'>ecuacovid</a></p>"),
             hr(),
-            HTML('<p><a class="github-button" href="https://github.com/vortixhead/estadisticas-covid-ec" data-color-scheme="no-preference: light; light: light; dark: light;" aria-label="Star vortixhead/estadisticas-covid-ec on GitHub">GitHub</a><a class="github-button" href="https://github.com/vortixhead/estadisticas-covid-ec/issues" data-color-scheme="no-preference: light; light: light; dark: light;" data-icon="octicon-issue-opened" aria-label="Issue vortixhead/estadisticas-covid-ec on GitHub">Reportar error</a></p>'),
-            HTML('<small>Boris Proaño - 2021</small> <a href="mailto:vortixhead@pm.io" target="_blank">✉️</a>'),
+            HTML('<a class="github-button" href="https://github.com/vortixhead/estadisticas-covid-ec" data-color-scheme="no-preference: light; light: light; dark: light;" aria-label="Star vortixhead/estadisticas-covid-ec on GitHub">GitHub</a><a class="github-button" href="https://github.com/vortixhead/estadisticas-covid-ec/issues" data-color-scheme="no-preference: light; light: light; dark: light;" data-icon="octicon-issue-opened" aria-label="Issue vortixhead/estadisticas-covid-ec on GitHub">Reportar error</a>'),
+            HTML('<br><small>Boris Proaño - 2021</small> <a href="mailto:vortixhead@pm.io" target="_blank">✉️</a>'),
           ),
           # verbatimTextOutput("hosp_filter"),
           # fluidRow(column(4, verbatimTextOutput("rango_fechas")))
