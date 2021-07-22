@@ -121,7 +121,7 @@ shinyUI(fluidPage(
             HTML("<p>📄 Fuente: <a href='https://github.com/andrab/ecuacovid' target='_blank'>ecuacovid</a></p>"),
             hr(),
             HTML('<p><a class="github-button" href="https://github.com/vortixhead/estadisticas-covid-ec" data-color-scheme="no-preference: light; light: light; dark: light;" aria-label="Star vortixhead/estadisticas-covid-ec on GitHub">GitHub</a><a class="github-button" href="https://github.com/vortixhead/estadisticas-covid-ec/issues" data-color-scheme="no-preference: light; light: light; dark: light;" data-icon="octicon-issue-opened" aria-label="Issue vortixhead/estadisticas-covid-ec on GitHub">Reportar error</a></p>'),
-            HTML('<small>Boris Proaño - 2020</small> <a href="mailto:vortixhead@pm.io" target="_blank">✉️</a>'),
+            HTML('<small>Boris Proaño - 2021</small> <a href="mailto:vortixhead@pm.io" target="_blank">✉️</a>'),
           ),
           # verbatimTextOutput("hosp_filter"),
           # fluidRow(column(4, verbatimTextOutput("rango_fechas")))
