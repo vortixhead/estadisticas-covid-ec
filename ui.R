@@ -47,6 +47,29 @@ shinyUI(fluidPage(
             ),
           ),
           conditionalPanel(
+            condition = "input.tabs == 'Camas'",
+            checkboxGroupInput(
+              "camas_filter", 
+              label = h4("Filtrar"), 
+              choices = list(
+                "Hospitalización Asignadas" = "Hospitalización Asignadas", 
+                "Hospitalización Ocupadas" = "Hospitalización Ocupadas", 
+                "Cuidados Intermedios Asignadas" = "Cuidados Intermedios Asignadas",
+                "Cuidados Intermedios Ocupadas" = "Cuidados Intermedios Ocupadas",
+                "UCI Asignadas" = "UCI Asignadas",
+                "UCI Ocupadas" = "UCI Ocupadas"
+              ),
+              selected = c(
+                "Hospitalización Asignadas",
+                "Hospitalización Ocupadas", 
+                "Cuidados Intermedios Asignadas",
+                "Cuidados Intermedios Ocupadas",
+                "UCI Asignadas",
+                "UCI Ocupadas"
+              )
+            ),
+          ),
+          conditionalPanel(
             condition = "input.tabs == 'Hospitalizaciones'",
             checkboxGroupInput(
               "hosp_filter", 
@@ -74,10 +97,10 @@ shinyUI(fluidPage(
                 "Muertes probables" = "Muertes Probables"
               ),
               selected = c(
-                "Total Muertes", 
-                "Nuevas", 
-                "Muertes",
-                "Muertes Probables"
+                # "Total Muertes", 
+                "Nuevas"
+                # "Muertes",
+                # "Muertes Probables"
               )
             ),
           ),
@@ -93,10 +116,10 @@ shinyUI(fluidPage(
                 "Total positivas" = "Total Positivas"
               ),
               selected = c(
-                "Nuevas", 
-                "PCR", 
-                "Rápidas",
-                "Total Positivas"
+                "Nuevas"
+                # "PCR", 
+                # "Rápidas",
+                # "Total Positivas"
               )
             ),
           ),
@@ -125,7 +148,6 @@ shinyUI(fluidPage(
             HTML('<a class="github-button" href="https://github.com/vortixhead/estadisticas-covid-ec" data-color-scheme="no-preference: light; light: light; dark: light;" aria-label="Star vortixhead/estadisticas-covid-ec on GitHub">GitHub</a><a class="github-button" href="https://github.com/vortixhead/estadisticas-covid-ec/issues" data-color-scheme="no-preference: light; light: light; dark: light;" data-icon="octicon-issue-opened" aria-label="Issue vortixhead/estadisticas-covid-ec on GitHub">Reportar error</a>'),
             HTML('<br><small>Boris Proaño - 2021</small> <a href="mailto:vortixhead@pm.io" target="_blank">✉️</a>'),
           ),
-          # verbatimTextOutput("hosp_filter"),
           # fluidRow(column(4, verbatimTextOutput("rango_fechas")))
         ),
 
@@ -136,6 +158,7 @@ shinyUI(fluidPage(
             tabPanel("Vacunas aplicadas", br(), plotlyOutput("vacun2Plot")),
             tabPanel("Vacunas arribadas", br(), plotlyOutput("vacunPlot")),
             tabPanel("Pruebas positivas", br(), plotlyOutput("positPlot")),
+            tabPanel("Camas", br(), plotlyOutput("camasPlot")), 
             tabPanel("Hospitalizaciones", br(), plotlyOutput("hospiPlot")), 
             tabPanel("Muertes", br(), plotlyOutput("muertPlot")) 
           )

@@ -75,9 +75,6 @@ names(vacun_dia_long)[names(vacun_dia_long) == "variable"] <- "fecha"
 vacun_dia_long$fecha <- as.Date(vacun_dia_long$fecha, format= 'X%d.%m.%Y') 
 
 # ==============================================================================
-
-
-# ==============================================================================
 # Plot vacunación
 
 # cargar bd
@@ -93,6 +90,23 @@ vacun2_dia_long <- melt(vacun2_dia, value.name = 'cantidad')
 # names(vacun2_dia_long)[names(vacun2_dia_long) == "variable"] <- "fecha" 
 # convertir columna a fecha
 vacun2_dia_long$fecha <- as.Date(vacun2_dia_long$fecha, format= '%d/%m/%Y') 
+
+# ==============================================================================
+# Plot camas
+
+# cargar bd
+camas_dia <- read.csv(
+  'https://github.com/andrab/ecuacovid/raw/master/datos_crudos/ecuacovid-camas_por_dia.csv', 
+  header = TRUE, 
+  encoding = "UTF-8")
+
+# reestructurar
+# converter de wide a long
+camas_dia_long <- melt(camas_dia, value.name = 'cantidad') 
+# renombrar columna
+names(camas_dia_long)[names(camas_dia_long) == "variable"] <- "fecha" 
+# convertir columna a fecha
+camas_dia_long$fecha <- as.Date(camas_dia_long$fecha, format= 'X%d.%m.%Y') 
 
 # ==============================================================================
 
