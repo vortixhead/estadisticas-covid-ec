@@ -200,7 +200,7 @@ shinyServer(function(input, output) {
                                as.Date(input$rango_fechas[2], format="%Y/%m/%d")))
         })
         
-        colors <- brewer.pal(6, "Dark2")
+        colors <- colorRampPalette(brewer.pal(8, "Dark2"))(36)
         names(colors) <- levels(factor(camas_dia_long$informacion))
         custom_colors <- scale_color_manual(name = "Leyenda", values = colors)
         
