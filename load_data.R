@@ -62,7 +62,7 @@ posit_dia_long$fecha <- as.Date(posit_dia_long$fecha, format= 'X%d.%m.%Y')
 
 # cargar bd
 vacun_dia <- read.csv(
-  'https://github.com/andrab/ecuacovid/raw/master/datos_crudos/ecuacovid-vacunas_arribadas_por_dia.csv', 
+  'https://raw.githubusercontent.com/andrab/ecuacovid/master/datos_crudos/vacunas/fabricantes.csv', 
   header = TRUE, 
   encoding = "UTF-8")
 

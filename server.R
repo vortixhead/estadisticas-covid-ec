@@ -156,74 +156,74 @@ shinyServer(function(input, output) {
         posit_plt
     })
     
-    output$vacunPlot <- renderPlotly({
-        filtered_data <- reactive({
-            vacun_dia_long %>% 
-                filter(fabricante %in% input$vacun_filter) %>%
-                filter(between(fecha, 
-                               as.Date(input$rango_fechas[1], format="%Y/%m/%d"), 
-                               as.Date(input$rango_fechas[2], format="%Y/%m/%d")))
-        })
-        
-        colors <- brewer.pal(3, "Dark2")
-        names(colors) <- levels(factor(vacun_dia_long$fabricante))
-        custom_colors <- scale_color_manual(name = "Leyenda", values = colors)
-        
-        # crear plot
-        vacun_plt <- ggplot(
-            filtered_data(), 
-            aes(
-                x=fecha, 
-                y=cantidad, 
-                color = fabricante)
-        ) + 
-            geom_line() +
-            labs(
-                x="", 
-                y="Vacunas", 
-                title="Vacunas arribadas diarias", 
-                color = 'Leyenda') +
-            theme(plot.title = element_text(hjust=0.5, size=20, face="bold")) +
-            scale_x_date(breaks = date_breaks("months"), date_labels = "%b %Y") +
-            theme(axis.text.x = element_text(angle = 45)) +
-            custom_colors +
-            scale_y_continuous(labels = unit_format(unit = "M", scale = 1e-6))
-        vacun_plt
-    })
+    # output$vacunPlot <- renderPlotly({
+    #     filtered_data <- reactive({
+    #         vacun_dia_long %>% 
+    #             filter(fabricante %in% input$vacun_filter) %>%
+    #             filter(between(fecha, 
+    #                            as.Date(input$rango_fechas[1], format="%Y/%m/%d"), 
+    #                            as.Date(input$rango_fechas[2], format="%Y/%m/%d")))
+    #     })
+    #     
+    #     colors <- brewer.pal(3, "Dark2")
+    #     names(colors) <- levels(factor(vacun_dia_long$fabricante))
+    #     custom_colors <- scale_color_manual(name = "Leyenda", values = colors)
+    #     
+    #     # crear plot
+    #     vacun_plt <- ggplot(
+    #         filtered_data(), 
+    #         aes(
+    #             x=fecha, 
+    #             y=cantidad, 
+    #             color = fabricante)
+    #     ) + 
+    #         geom_line() +
+    #         labs(
+    #             x="", 
+    #             y="Vacunas", 
+    #             title="Vacunas arribadas diarias", 
+    #             color = 'Leyenda') +
+    #         theme(plot.title = element_text(hjust=0.5, size=20, face="bold")) +
+    #         scale_x_date(breaks = date_breaks("months"), date_labels = "%b %Y") +
+    #         theme(axis.text.x = element_text(angle = 45)) +
+    #         custom_colors +
+    #         scale_y_continuous(labels = unit_format(unit = "M", scale = 1e-6))
+    #     vacun_plt
+    # })
     
-    output$camasPlot <- renderPlotly({
-        filtered_data <- reactive({
-            camas_dia_long %>% 
-                filter(informacion %in% input$camas_filter) %>%
-                filter(between(fecha, 
-                               as.Date(input$rango_fechas[1], format="%Y/%m/%d"), 
-                               as.Date(input$rango_fechas[2], format="%Y/%m/%d")))
-        })
-        
-        colors <- brewer.pal(6, "Dark2")
-        names(colors) <- levels(factor(camas_dia_long$informacion))
-        custom_colors <- scale_color_manual(name = "Leyenda", values = colors)
-        
-        # crear plot
-        camas_plt <- ggplot(
-            filtered_data(), 
-            aes(
-                x=fecha, 
-                y=cantidad, 
-                color = informacion)
-        ) + 
-            geom_line() +
-            labs(
-                x="", 
-                y="Camas", 
-                title="Ocupación de camas por día", 
-                color = 'Leyenda') +
-            theme(plot.title = element_text(hjust=0.5, size=20, face="bold")) +
-            scale_x_date(breaks = date_breaks("months"), date_labels = "%b %Y") +
-            theme(axis.text.x = element_text(angle = 45)) +
-            custom_colors +
-            scale_y_continuous(labels = unit_format(unit = "K", scale = 1e-3))
-        camas_plt
-    })
+    # output$camasPlot <- renderPlotly({
+    #     filtered_data <- reactive({
+    #         camas_dia_long %>% 
+    #             filter(informacion %in% input$camas_filter) %>%
+    #             filter(between(fecha, 
+    #                            as.Date(input$rango_fechas[1], format="%Y/%m/%d"), 
+    #                            as.Date(input$rango_fechas[2], format="%Y/%m/%d")))
+    #     })
+    #     
+    #     colors <- brewer.pal(6, "Dark2")
+    #     names(colors) <- levels(factor(camas_dia_long$informacion))
+    #     custom_colors <- scale_color_manual(name = "Leyenda", values = colors)
+    #     
+    #     # crear plot
+    #     camas_plt <- ggplot(
+    #         filtered_data(), 
+    #         aes(
+    #             x=fecha, 
+    #             y=cantidad, 
+    #             color = informacion)
+    #     ) + 
+    #         geom_line() +
+    #         labs(
+    #             x="", 
+    #             y="Camas", 
+    #             title="Ocupación de camas por día", 
+    #             color = 'Leyenda') +
+    #         theme(plot.title = element_text(hjust=0.5, size=20, face="bold")) +
+    #         scale_x_date(breaks = date_breaks("months"), date_labels = "%b %Y") +
+    #         theme(axis.text.x = element_text(angle = 45)) +
+    #         custom_colors +
+    #         scale_y_continuous(labels = unit_format(unit = "K", scale = 1e-3))
+    #     camas_plt
+    # })
 
 })
